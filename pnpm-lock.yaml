@@ -11,6 +11,9 @@ importers:
       '@monorepo/api':
         specifier: workspace:*
         version: link:packages/api
+      '@monorepo/database':
+        specifier: workspace:*
+        version: link:packages/database
       '@monorepo/ui':
         specifier: workspace:*
         version: link:packages/ui
@@ -110,7 +113,26 @@ importers:
         version: 1.10.0(@swc/helpers@0.5.13)
       tsup:
         specifier: ^8.0.1
-        version: 8.3.5(@swc/core@1.10.0(@swc/helpers@0.5.13))(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
+        version: 8.3.5(@swc/core@1.10.0)(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.7.2
+
+  packages/database:
+    dependencies:
+      '@prisma/client':
+        specifier: ^6.0.1
+        version: 6.0.1(prisma@6.0.1)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.1
+        version: 22.10.1
+      prisma:
+        specifier: ^6.0.1
+        version: 6.0.1
+      tsup:
+        specifier: ^8.0.1
+        version: 8.3.5(@swc/core@1.10.0)(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
       typescript:
         specifier: ^5.3.3
         version: 5.7.2
@@ -156,7 +178,7 @@ importers:
         version: 3.4.16(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.13))(@types/node@20.17.9)(typescript@5.7.2))
       tsup:
         specifier: ^8.0.1
-        version: 8.3.5(@swc/core@1.10.0(@swc/helpers@0.5.13))(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
+        version: 8.3.5(@swc/core@1.10.0)(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
       typescript:
         specifier: ^5.3.3
         version: 5.7.2
@@ -172,7 +194,7 @@ importers:
         version: 1.10.0(@swc/helpers@0.5.13)
       tsup:
         specifier: ^8.0.1
-        version: 8.3.5(@swc/core@1.10.0(@swc/helpers@0.5.13))(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
+        version: 8.3.5(@swc/core@1.10.0)(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
       typescript:
         specifier: ^5.3.3
         version: 5.7.2
@@ -621,6 +643,30 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
+  '@prisma/client@6.0.1':
+    resolution: {integrity: sha512-60w7kL6bUxz7M6Gs/V+OWMhwy94FshpngVmOY05TmGD0Lhk+Ac0ZgtjlL6Wll9TD4G03t4Sq1wZekNVy+Xdlbg==}
+    engines: {node: '>=18.18'}
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+
+  '@prisma/debug@6.0.1':
+    resolution: {integrity: sha512-jQylgSOf7ibTVxqBacnAlVGvek6fQxJIYCQOeX2KexsfypNzXjJQSS2o5s+Mjj2Np93iSOQUaw6TvPj8syhG4w==}
+
+  '@prisma/engines-version@5.23.0-27.5dbef10bdbfb579e07d35cc85fb1518d357cb99e':
+    resolution: {integrity: sha512-JmIds0Q2/vsOmnuTJYxY4LE+sajqjYKhLtdOT6y4imojqv5d/aeVEfbBGC74t8Be1uSp0OP8lxIj2OqoKbLsfQ==}
+
+  '@prisma/engines@6.0.1':
+    resolution: {integrity: sha512-4hxzI+YQIR2uuDyVsDooFZGu5AtixbvM2psp+iayDZ4hRrAHo/YwgA17N23UWq7G6gRu18NvuNMb48qjP3DPQw==}
+
+  '@prisma/fetch-engine@6.0.1':
+    resolution: {integrity: sha512-T36bWFVGeGYYSyYOj9d+O9G3sBC+pAyMC+jc45iSL63/Haq1GrYjQPgPMxrEj9m739taXrupoysRedQ+VyvM/Q==}
+
+  '@prisma/get-platform@6.0.1':
+    resolution: {integrity: sha512-zspC9vlxAqx4E6epMPMLLBMED2VD8axDe8sPnquZ8GOsn6tiacWK0oxrGK4UAHYzYUVuMVUApJbdXB2dFpLhvg==}
+
   '@rollup/rollup-android-arm-eabi@4.28.1':
     resolution: {integrity: sha512-2aZp8AES04KI2dy3Ss6/MDjXbwBzj+i0GqKtWXgw2/Ma6E4jJvujryO6gJAghIRVz7Vwr9Gtl/8na3nDUKpraQ==}
     cpu: [arm]
@@ -853,6 +899,9 @@ packages:
 
   '@types/node@20.17.9':
     resolution: {integrity: sha512-0JOXkRyLanfGPE2QRCwgxhzlBAvaRdCNMcvbd7jFfpmD4eEXll7LRwy5ymJmyeZqk7Nh7eD2LeUyQ68BbndmXw==}
+
+  '@types/node@22.10.1':
+    resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
 
   '@types/prop-types@15.7.14':
     resolution: {integrity: sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==}
@@ -2238,6 +2287,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
+  prisma@6.0.1:
+    resolution: {integrity: sha512-CaMNFHkf+DDq8zq3X/JJsQ4Koy7dyWwwtOKibkT/Am9j/tDxcfbg7+lB1Dzhx18G/+RQCMgjPYB61bhRqteNBQ==}
+    engines: {node: '>=18.18'}
+    hasBin: true
+
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
 
@@ -2663,6 +2717,9 @@ packages:
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
   unpipe@1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
@@ -3083,6 +3140,31 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@prisma/client@6.0.1(prisma@6.0.1)':
+    optionalDependencies:
+      prisma: 6.0.1
+
+  '@prisma/debug@6.0.1': {}
+
+  '@prisma/engines-version@5.23.0-27.5dbef10bdbfb579e07d35cc85fb1518d357cb99e': {}
+
+  '@prisma/engines@6.0.1':
+    dependencies:
+      '@prisma/debug': 6.0.1
+      '@prisma/engines-version': 5.23.0-27.5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+      '@prisma/fetch-engine': 6.0.1
+      '@prisma/get-platform': 6.0.1
+
+  '@prisma/fetch-engine@6.0.1':
+    dependencies:
+      '@prisma/debug': 6.0.1
+      '@prisma/engines-version': 5.23.0-27.5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+      '@prisma/get-platform': 6.0.1
+
+  '@prisma/get-platform@6.0.1':
+    dependencies:
+      '@prisma/debug': 6.0.1
+
   '@rollup/rollup-android-arm-eabi@4.28.1':
     optional: true
 
@@ -3257,6 +3339,10 @@ snapshots:
   '@types/node@20.17.9':
     dependencies:
       undici-types: 6.19.8
+
+  '@types/node@22.10.1':
+    dependencies:
+      undici-types: 6.20.0
 
   '@types/prop-types@15.7.14': {}
 
@@ -4859,6 +4945,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
+  prisma@6.0.1:
+    dependencies:
+      '@prisma/engines': 6.0.1
+    optionalDependencies:
+      fsevents: 2.3.3
+
   prop-types@15.8.1:
     dependencies:
       loose-envify: 1.4.0
@@ -5362,7 +5454,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.3.5(@swc/core@1.10.0(@swc/helpers@0.5.13))(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1):
+  tsup@8.3.5(@swc/core@1.10.0)(jiti@1.21.6)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.24.0)
       cac: 6.7.14
@@ -5444,6 +5536,8 @@ snapshots:
       which-boxed-primitive: 1.1.0
 
   undici-types@6.19.8: {}
+
+  undici-types@6.20.0: {}
 
   unpipe@1.0.0: {}
 

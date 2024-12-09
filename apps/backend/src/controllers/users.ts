@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { prisma } from '@monorepo/database';
 
 export class UserController {
   async getCurrentUser(req: Request, res: Response) {

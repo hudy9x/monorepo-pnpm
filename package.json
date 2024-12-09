@@ -25,6 +25,7 @@
   "dependencies": {
     "@monorepo/ui": "workspace:*",
     "@monorepo/utils": "workspace:*",
-    "@monorepo/api": "workspace:*"
+    "@monorepo/api": "workspace:*",
+    "@monorepo/database": "workspace:*"
   }
 }
