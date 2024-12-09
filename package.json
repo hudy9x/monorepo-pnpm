@@ -1,0 +1,30 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pnpm --parallel --filter=./apps/* run dev",
+    "build": "pnpm --filter=./apps/* run build",
+    "start": "pnpm --filter=./apps/* run start",
+    "lint": "pnpm --parallel run lint"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@monorepo/ui": "workspace:*",
+    "@monorepo/utils": "workspace:*",
+    "@monorepo/api": "workspace:*"
+  }
+}
